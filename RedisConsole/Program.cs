@@ -9,8 +9,6 @@ namespace RedisConsole
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var redisManager = new RedisManagerPool("localhost:6379");
-            var redis = redisManager.GetClient();
 
             using (StreamReader r = new StreamReader("example.json"))
             {
@@ -18,6 +16,8 @@ namespace RedisConsole
                 //Console.WriteLine(json);
                 //redis.SetValue("json",json);
             }
+            var redisManager = new RedisManagerPool("localhost:6379");
+            var redis = redisManager.GetClient();
 
             var x1 = redis.GetValue("foo");
             Console.WriteLine(x1);
